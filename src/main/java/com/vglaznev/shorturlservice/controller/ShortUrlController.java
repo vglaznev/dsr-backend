@@ -15,6 +15,7 @@ import java.net.URI;
 public class ShortUrlController {
     private final ShortUrlService urlService;
 
+    //TODO: move endpoint to root
     @GetMapping("/{shortUrl}")
     public ResponseEntity<?> redirect(@PathVariable String shortUrl) {
         return urlService.getUrlAlias(shortUrl)
