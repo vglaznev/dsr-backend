@@ -17,13 +17,12 @@ public class ShortUrlService {
     private final MapperImpl mapper;
 
     public Optional<UrlAliasDto> getUrlAlias(String shortUrl) {
-        UrlAliasDto urlDto = mapper.urlAliasToDto(repository.findOne(shortUrl));
-        return Optional.ofNullable(urlDto);
+        return repository.findByOriginalUrl(shortUrl).map(mapper::urlAliasToDto);
     }
 
     public UrlAliasDto create(String originalUrl) {
         //If original url already has a short representation, just return short url
-        Optional<UrlAliasEntity> entity = Optional.ofNullable(repository.findByOriginalUrl(originalUrl));
+        Optional<UrlAliasEntity> entity = repository.findByOriginalUrl(originalUrl);
         if (entity.isPresent()) {
             return mapper.urlAliasToDto(entity.get());
         }

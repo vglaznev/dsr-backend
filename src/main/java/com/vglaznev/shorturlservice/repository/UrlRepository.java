@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 //TODO: replace with db
 @Component
@@ -15,8 +16,8 @@ public class UrlRepository<T extends UrlAliasEntity> {
         this.data = new HashMap<>();
     }
 
-    public T findOne(String id) {
-        return data.get(id);
+    public Optional<T> findOne(String id) {
+        return Optional.ofNullable(data.get(id));
     }
 
     public T save(T entity) {
@@ -28,12 +29,12 @@ public class UrlRepository<T extends UrlAliasEntity> {
         return data.containsKey(id);
     }
 
-    public T findByOriginalUrl(String originalUrl) {
+    public Optional<T> findByOriginalUrl(String originalUrl) {
         for (Map.Entry<String, T> entry : data.entrySet()) {
             if (originalUrl.equals(entry.getValue().getOriginalUrl())) {
-                return entry.getValue();
+                return Optional.ofNullable(entry.getValue());
             }
         }
-        return null;
+        return Optional.empty();
     }
 }
