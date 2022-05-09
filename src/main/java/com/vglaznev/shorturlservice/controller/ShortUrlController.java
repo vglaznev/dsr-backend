@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/api/v1/short-url")
+@RequestMapping({"/api/v1/short-url", ""})
 @RequiredArgsConstructor
 public class ShortUrlController {
     private final ShortUrlService urlService;

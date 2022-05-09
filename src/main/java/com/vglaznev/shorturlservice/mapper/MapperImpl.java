@@ -7,11 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class MapperImpl implements Mapper {
 
-    //TODO: use interface for urlEntity and ShortUlDto and replace these methods with one method
-
     private String convertIdToUrl(String urlId) {
         //TODO: replace url prefix with environment variables(host, port, endpoint)
-        return "localhost:8080/api/v1/short-url/" + urlId;
+        return "localhost:8080/" + urlId;
     }
 
     @Override
@@ -25,14 +23,4 @@ public class MapperImpl implements Mapper {
         return urlAliasDto;
     }
 
-    @Override
-    public UrlAliasEntity dtoToUrlAlias(UrlAliasDto urlAliasDto) {
-        if (urlAliasDto == null) {
-            return null;
-        }
-        UrlAliasEntity urlAlias = new UrlAliasEntity();
-        urlAlias.setShortUrlId(urlAliasDto.getShortUrl());
-        urlAlias.setOriginalUrl(urlAliasDto.getOriginalUrl());
-        return urlAlias;
-    }
 }
