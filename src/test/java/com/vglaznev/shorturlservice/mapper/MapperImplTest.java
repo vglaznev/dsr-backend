@@ -28,7 +28,7 @@ class MapperImplTest {
     }
 
     @Test
-    void onNullTest(){
+    void onNullTest() {
         assertNull(mapper.urlAliasToDto(null));
     }
 }

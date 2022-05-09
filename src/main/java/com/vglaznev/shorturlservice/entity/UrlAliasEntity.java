@@ -1,7 +1,6 @@
 package com.vglaznev.shorturlservice.entity;
 
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "url_table")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
