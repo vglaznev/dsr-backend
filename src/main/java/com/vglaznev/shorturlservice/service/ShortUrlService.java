@@ -2,11 +2,10 @@ package com.vglaznev.shorturlservice.service;
 
 import com.vglaznev.shorturlservice.dto.UrlAliasDto;
 import com.vglaznev.shorturlservice.entity.UrlAliasEntity;
-import com.vglaznev.shorturlservice.generator.UniqueStringGenerator;
+import com.vglaznev.shorturlservice.generator.RandomStringGenerator;
 import com.vglaznev.shorturlservice.mapper.MapperImpl;
 import com.vglaznev.shorturlservice.repository.UrlRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -30,7 +29,7 @@ public class ShortUrlService {
 
         String shortUrl;
         do {
-            shortUrl = UniqueStringGenerator.generate();
+            shortUrl = RandomStringGenerator.generate();
             //In case of collision, generate another short url
         } while (repository.existsById(shortUrl));
 
