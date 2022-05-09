@@ -6,7 +6,6 @@ import com.vglaznev.shorturlservice.generator.UniqueStringGenerator;
 import com.vglaznev.shorturlservice.mapper.MapperImpl;
 import com.vglaznev.shorturlservice.repository.UrlRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -28,12 +27,12 @@ public class ShortUrlService {
             return mapper.urlAliasToDto(entity.get());
         }
 
-        String shortUrl;
+        String shortUrlId;
         do {
-            shortUrl = UniqueStringGenerator.generate();
+            shortUrlId = UniqueStringGenerator.generate();
             //In case of collision, generate another short url
-        } while (repository.existsById(shortUrl));
+        } while (repository.existsById(shortUrlId));
 
-        return mapper.urlAliasToDto(repository.save(new UrlAliasEntity(shortUrl, originalUrl)));
+        return mapper.urlAliasToDto(repository.save(new UrlAliasEntity(shortUrlId, originalUrl)));
     }
 }
