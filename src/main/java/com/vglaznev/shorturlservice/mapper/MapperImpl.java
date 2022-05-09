@@ -9,7 +9,7 @@ public class MapperImpl implements Mapper {
 
     private String convertIdToUrl(String urlId) {
         //TODO: replace url prefix with environment variables(host, port, endpoint)
-        return "localhost:8080/" + urlId;
+        return "localhost:8080/api/v1/short-url" + urlId;
     }
 
     @Override
