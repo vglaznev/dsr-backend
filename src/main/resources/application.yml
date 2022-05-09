@@ -1,0 +1,18 @@
+spring:
+  #for swagger, dont work w/o it
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/url_service_db
+    username: postgres
+    password: pass345
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      #TODO: not forget to change to none before pushing to GitHub
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    #TODO: not forget to delete
+    show-sql: true

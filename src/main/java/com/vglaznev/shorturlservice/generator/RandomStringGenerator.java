@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 import java.util.Base64;
 
 //TODO: rename class (choose correct name)
-public class UniqueStringGenerator {
+public class RandomStringGenerator {
     private static final SecureRandom random = new SecureRandom();
     private static final Base64.Encoder encoder = Base64.getUrlEncoder().withoutPadding();
     private static final int ID_DEFAULT_LENGTH = 8;

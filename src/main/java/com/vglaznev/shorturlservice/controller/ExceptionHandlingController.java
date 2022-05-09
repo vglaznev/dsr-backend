@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ExceptionHandlingController {
     //For exception, which were not captured by previous handlers (handlers will be added)
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> handleUnexpectedException(Exception exception){
+    public ResponseEntity<?> handleUnexpectedException(Exception exception) {
         log.error("Unexpected exception ", exception);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
     }

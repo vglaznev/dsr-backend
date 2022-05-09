@@ -16,9 +16,9 @@ public class ShortUrlController {
     private final ShortUrlService urlService;
 
     //TODO: move endpoint to root
-    @GetMapping("/{shortUrl}")
-    public ResponseEntity<?> redirect(@PathVariable String shortUrl) {
-        return urlService.getUrlAlias(shortUrl)
+    @GetMapping("/{shortUrlId}")
+    public ResponseEntity<?> redirect(@PathVariable String shortUrlId) {
+        return urlService.getUrlAlias(shortUrlId)
                 .map(url ->
                         ResponseEntity
                                 .status(HttpStatus.FOUND)
