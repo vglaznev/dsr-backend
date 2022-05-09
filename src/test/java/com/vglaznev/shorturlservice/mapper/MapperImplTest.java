@@ -24,7 +24,7 @@ class MapperImplTest {
         var urlAliasDto = mapper.urlAliasToDto(urlAlias);
 
         assertEquals(originalUrl, urlAliasDto.getOriginalUrl());
-        assertEquals("localhost:8080/" + shortUrlId, urlAliasDto.getShortUrl());
+        assertEquals("localhost:8080/api/v1/short-url" + shortUrlId, urlAliasDto.getShortUrl());
     }
 
     @Test
