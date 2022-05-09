@@ -5,6 +5,4 @@ import com.vglaznev.shorturlservice.entity.UrlAliasEntity;
 
 public interface Mapper {
     UrlAliasDto urlAliasToDto(UrlAliasEntity urlAlias);
-
-    UrlAliasEntity dtoToUrlAlias(UrlAliasDto urlAliasDto);
 }
