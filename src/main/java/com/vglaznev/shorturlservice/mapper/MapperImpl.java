@@ -17,9 +17,8 @@ public class MapperImpl implements Mapper {
         if (urlAlias == null) {
             return null;
         }
-        UrlAliasDto urlAliasDto = new UrlAliasDto();
-        urlAliasDto.setShortUrl(convertIdToUrl(urlAlias.getShortUrlId()));
-        urlAliasDto.setOriginalUrl(urlAlias.getOriginalUrl());
+        UrlAliasDto urlAliasDto =
+                new UrlAliasDto(convertIdToUrl(urlAlias.getShortUrlId()), urlAlias.getOriginalUrl());
         return urlAliasDto;
     }
 
