@@ -19,8 +19,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
-class ShortUrlControllerTest {
-    public static final String API_PREFIX = "/api/v1/short-url/";
+class RedirectControllerTest {
+    public static final String SERVICE_URL = "http://somehost/";
     public static final String TEST_SHORT_URL_ID = "3P4vOBBa";
     private MockMvc mvc;
     @Mock
@@ -30,8 +30,7 @@ class ShortUrlControllerTest {
 
     @BeforeEach
     void setUp() {
-        mvc = MockMvcBuilders.standaloneSetup(urlController)
-                .build();
+        mvc = MockMvcBuilders.standaloneSetup(urlController).build();
     }
 
     @Test
@@ -39,9 +38,9 @@ class ShortUrlControllerTest {
         String longUrl = "https://google.com";
 
         when(urlService.getUrlAlias(TEST_SHORT_URL_ID))
-                .thenReturn(Optional.of(new UrlAliasDto(API_PREFIX + TEST_SHORT_URL_ID, longUrl)));
+                .thenReturn(Optional.of(new UrlAliasDto(SERVICE_URL + TEST_SHORT_URL_ID, longUrl)));
 
-        mvc.perform(get(API_PREFIX + TEST_SHORT_URL_ID))
+        mvc.perform(get(SERVICE_URL + TEST_SHORT_URL_ID))
                 .andExpect(status().isFound())
                 .andExpect(redirectedUrl(longUrl));
     }
@@ -51,7 +50,7 @@ class ShortUrlControllerTest {
         when(urlService.getUrlAlias(TEST_SHORT_URL_ID))
                 .thenReturn(Optional.empty());
 
-        mvc.perform(get(API_PREFIX + TEST_SHORT_URL_ID))
+        mvc.perform(get(SERVICE_URL + TEST_SHORT_URL_ID))
                 .andExpect(status().isNotFound());
     }
 }
