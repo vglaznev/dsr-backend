@@ -1,35 +1,106 @@
-## DSR project backend
+# DSR project backend
+
+
+### Project description
 
 ---
+
+>Will be added soon
+
+
 ### How to start
 
-To start this application run following command in cmd:
+---
 
-`mvn spring-boot:run`
+1. Clone this project on your computer by running the following command in terminal (please, make sure you have git installed):
+
+    `git clone https://github.com/vglaznev/dsr-backend.git`
+
+
+2. Go to project root directory: 
+
+    `cd dsr-backend`
+
+### Configure database
+
+---
+
+Before run the application or tests you need to define datasource properties. To do this, you need to change `application.yml` file:
+
+`cd src/main/resources/application.yml`
+
+Then you will see:
+
+```
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:<port>/<database_name>
+        username: <username>
+        password: <password>
+        driver-class-name: org.postgresql.Driver 
+```
+You need to specify those values:
+* `port` - port the database server listens on. By default, it's `5432`, if your server sets on another port, change this field;
+* `database_name` - name of database used by app. You can set the default one by PostgreSQL: `postgres` or create your own database:
+`https://www.postgresql.org/docs/current/app-createdb.html`;
+
+* `username` - name of your PostgreSQL user. You can use the default one by PostgreSQL: `postgres`;  
+* `password` - PostgreSQL user password;
+
+### Run the application
+
+---
+
+#### Without docker
+
+
+
+Please, make sure you have the latest versions of `Java JDK` and `PostgreSQL`. You can download them from:
+
+`Java`: https://www.oracle.com/java/technologies/downloads/#java17
+
+`PostgreSQL`: https://www.postgresql.org/download/
+
+To run the application, execute following command in project root directory:
+
+`./mvnw spring-boot:run`
+
+(if you use Windows system, run `mvnw.cmd` instead of `./mvnw`, or you can use `mvn` on all systems, if you have Maven installed)
+
+#### With docker
+
+---
+
+>Will be added soon
+
 
 ### Api-Docs
 
+---
+
 You can check api-documentation:
 
-`https://localhost:8080/swagger-ui`
+`https://localhost:8080/documentation/swagger-ui/index.html`
 
-It doesn't have any comments yet, but you can try-out some methods.
+It doesn't have any comments yet, but you can try out some methods.
 
-`http-get:` `localhost:8080/api/v1/short-url/<url>` - short url that redirects you to original resources;
+List of endpoints:
 
-`http-post:` `localhost:8080/api/v1/short-url/create` - create short url from original resources, put original url in request body;
+* `/api/v1/user/registration` Register a new user.
+
+* `/api/v1/short-url/create` Create short link.
+
+* `/<rLYZqFw2>` Redirect to original resource.
+
 
 ### Version
-The latest version is v1.1.
+
+---
+
+The latest version is v1.2-dev.
 
 ### History
-* v1.1:
-    * migrate to Postgresql
-    * add unit-tests
-    * add api-docs  
 
+---
 
-* v1.0-dev:
-    
-    * Can create short urls;
-    * Redirecting from short urls to original resources;
+>Will be added soon
