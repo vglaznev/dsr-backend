@@ -1,16 +1,13 @@
 package com.vglaznev.shorturlservice.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Builder;
+import lombok.Value;
 
-@Data
-@NoArgsConstructor
+@Value
 @AllArgsConstructor
+@Builder
 public class UrlAliasDto {
-    @JsonProperty()
-    private String shortUrl;
-    @JsonProperty()
+    private String shortUrlId;
     private String originalUrl;
 }

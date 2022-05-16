@@ -27,12 +27,12 @@ public class ShortUrlService {
             return mapper.urlAliasToDto(entity.get());
         }
 
-        String shortUrl;
+        String shortUrlId;
         do {
-            shortUrl = RandomStringGenerator.generate();
-            //In case of collision, generate another short url
-        } while (repository.existsById(shortUrl));
+            shortUrlId = RandomStringGenerator.generate();
+            //In case of collision, generate another short url id
+        } while (repository.existsById(shortUrlId));
 
-        return mapper.urlAliasToDto(repository.save(new UrlAliasEntity(shortUrl, originalUrl)));
+        return mapper.urlAliasToDto(repository.save(new UrlAliasEntity(shortUrlId, originalUrl)));
     }
 }
