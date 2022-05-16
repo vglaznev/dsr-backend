@@ -12,4 +12,5 @@ public class Config {
     public Supplier<String> currentLocation() {
         return () -> ServletUriComponentsBuilder.fromCurrentContextPath().toUriString();
     }
+
 }
