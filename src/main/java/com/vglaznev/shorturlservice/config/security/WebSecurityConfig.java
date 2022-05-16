@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    public static final String SHORT_URL_ID_PATTERN = "/{[a-zA-Z0-9_-]{8}}";
+    public static final String SHORT_URL_ID_PATTERN = "/{shortUrlId:[a-zA-Z0-9_-]{8}}";
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder passwordEncoder;
 
@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/v*/user/registration", SHORT_URL_ID_PATTERN)
+                    .antMatchers("/api/v*/user/registration", SHORT_URL_ID_PATTERN)
                     .permitAll()
                 .anyRequest()
                     .authenticated();
