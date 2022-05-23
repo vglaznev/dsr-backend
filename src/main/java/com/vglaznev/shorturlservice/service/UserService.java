@@ -2,7 +2,6 @@ package com.vglaznev.shorturlservice.service;
 
 import com.vglaznev.shorturlservice.dto.RegisterRequest;
 import com.vglaznev.shorturlservice.entity.UserEntity;
-import com.vglaznev.shorturlservice.exception.UserAlreadyExistException;
 import com.vglaznev.shorturlservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
+import java.util.List;
 
 
 @Service
@@ -22,7 +21,6 @@ public class UserService implements UserDetailsService {
     //Only have one role in service
     private static final String ROLE = "USER_ROLE";
     private static final String USER_NOT_FOUND_ERROR_MESSAGE = "User with username %s not found";
-    private static final String USER_EXIST_ERROR_MESSAGE = "User with username %s already exist";
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
@@ -33,21 +31,21 @@ public class UserService implements UserDetailsService {
                         new User(
                                 user.getUsername(),
                                 user.getPassword(),
-                                Arrays.asList(new SimpleGrantedAuthority(ROLE))))
+                                List.of(new SimpleGrantedAuthority(ROLE))))
                 .orElseThrow(() ->
                         new UsernameNotFoundException(String.format(USER_NOT_FOUND_ERROR_MESSAGE, username)));
 
     }
 
-    public void registerUser(RegisterRequest user) {
+    public boolean registerUser(RegisterRequest user) {
         boolean isExist = userRepository.findByUsername(user.getUsername()).isPresent();
-
         if (isExist) {
-            throw new UserAlreadyExistException(String.format(USER_EXIST_ERROR_MESSAGE, user.getUsername()));
+            return false;
         }
 
         String encodedPassword = passwordEncoder.encode(user.getPassword());
-
         userRepository.save(new UserEntity(user.getUsername(), encodedPassword));
+
+        return true;
     }
 }

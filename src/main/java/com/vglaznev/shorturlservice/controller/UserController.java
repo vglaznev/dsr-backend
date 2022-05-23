@@ -18,7 +18,7 @@ public class UserController {
 
     @PostMapping("/registration")
     public ResponseEntity registerNewUser(@RequestBody RegisterRequest newUser) {
-        userService.registerUser(newUser);
-        return new ResponseEntity(HttpStatus.OK);
+        boolean successful = userService.registerUser(newUser);
+        return new ResponseEntity(successful? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 }
