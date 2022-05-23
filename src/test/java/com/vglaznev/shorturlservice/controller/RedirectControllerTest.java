@@ -26,11 +26,11 @@ class RedirectControllerTest {
     @Mock
     private ShortUrlService urlService;
     @InjectMocks
-    private ShortUrlController urlController;
+    private RedirectController redirectController;
 
     @BeforeEach
     void setUp() {
-        mvc = MockMvcBuilders.standaloneSetup(urlController).build();
+        mvc = MockMvcBuilders.standaloneSetup(redirectController).build();
     }
 
     @Test
