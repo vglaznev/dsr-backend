@@ -3,11 +3,13 @@ package com.vglaznev.shorturlservice.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Supplier;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@EqualsAndHashCode
 public class WrappedUrlAliasDto {
     private final UrlAliasDto urlAliasDto;
     private final String serviceUrl;

@@ -40,14 +40,14 @@ public class UserService implements UserDetailsService {
     }
 
     public void registerUser(RegisterRequest user) {
-        boolean isExist = userRepository.findByUsername(user.username()).isPresent();
+        boolean isExist = userRepository.findByUsername(user.getUsername()).isPresent();
 
         if (isExist) {
-            throw new UserAlreadyExistException(String.format(USER_EXIST_ERROR_MESSAGE, user.username()));
+            throw new UserAlreadyExistException(String.format(USER_EXIST_ERROR_MESSAGE, user.getUsername()));
         }
 
-        String encodedPassword = passwordEncoder.encode(user.password());
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
 
-        userRepository.save(new UserEntity(user.username(), encodedPassword));
+        userRepository.save(new UserEntity(user.getUsername(), encodedPassword));
     }
 }
