@@ -38,10 +38,6 @@ public class RedirectController {
                                 .status(HttpStatus.FOUND)
                                 .location(URI.create(url.getOriginalUrl()))
                                 .build())
-                .orElseGet(() ->
-                        ResponseEntity
-                                .status(HttpStatus.NOT_FOUND)
-                                .build()
-                );
+                .orElse(ResponseEntity.notFound().build());
     }
 }
