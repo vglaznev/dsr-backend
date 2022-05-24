@@ -1,9 +1,10 @@
 package com.vglaznev.shorturlservice.service;
 
-import com.vglaznev.shorturlservice.dto.RegisterRequest;
+import com.vglaznev.shorturlservice.dto.UserDto;
 import com.vglaznev.shorturlservice.entity.UserEntity;
 import com.vglaznev.shorturlservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserService implements UserDetailsService {
     //Only have one role in service
     private static final String ROLE = "USER_ROLE";
@@ -37,7 +39,7 @@ public class UserService implements UserDetailsService {
 
     }
 
-    public boolean registerUser(RegisterRequest user) {
+    public boolean registerUser(UserDto user) {
         boolean isExist = userRepository.findByUsername(user.getUsername()).isPresent();
         if (isExist) {
             return false;
@@ -47,5 +49,11 @@ public class UserService implements UserDetailsService {
         userRepository.save(new UserEntity(user.getUsername(), encodedPassword));
 
         return true;
+    }
+
+    public boolean validateUser(UserDto user) {
+        return userRepository.findByUsername(user.getUsername())
+                .map(u -> passwordEncoder.matches(user.getPassword(), u.getPassword()))
+                .orElse(false);
     }
 }

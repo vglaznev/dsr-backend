@@ -31,7 +31,7 @@ public class ShortUrlController {
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Create short url successfully",
+                            description = "",
                             content = @Content(
                                     schema = @Schema(implementation = WrappedUrlAliasDto.class),
                                     mediaType = "application/json")),
