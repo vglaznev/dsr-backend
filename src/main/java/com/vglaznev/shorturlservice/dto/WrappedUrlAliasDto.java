@@ -1,6 +1,8 @@
 package com.vglaznev.shorturlservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -10,6 +12,7 @@ import java.util.function.Supplier;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode
+@Schema(description = "Keep short and original URL")
 public class WrappedUrlAliasDto {
     private final UrlAliasDto urlAliasDto;
     private final String serviceUrl;

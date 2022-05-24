@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                    .antMatchers("/api/v*/user/registration", SHORT_URL_ID_PATTERN)
+                    .antMatchers("/api/v*/user/registration", SHORT_URL_ID_PATTERN,"/v3/api-docs/**", "/swagger-ui/**")
                     .permitAll()
                 .anyRequest()
                     .authenticated();
