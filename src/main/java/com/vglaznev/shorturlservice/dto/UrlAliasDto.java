@@ -1,13 +1,13 @@
 package com.vglaznev.shorturlservice.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Value;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
-@Value
 @AllArgsConstructor
-@Builder
+@EqualsAndHashCode
+@Getter
 public class UrlAliasDto {
-    private String shortUrlId;
-    private String originalUrl;
+    private final String shortUrlId;
+    private final String originalUrl;
 }

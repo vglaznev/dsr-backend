@@ -13,10 +13,10 @@ public class MapperImpl implements Mapper {
             return null;
         }
 
-        return UrlAliasDto.builder()
-                .shortUrlId(urlAlias.getShortUrlId())
-                .originalUrl(urlAlias.getOriginalUrl())
-                .build();
+        return new UrlAliasDto(
+                urlAlias.getShortUrlId(),
+                urlAlias.getOriginalUrl());
+
     }
 
 }
