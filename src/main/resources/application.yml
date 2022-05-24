@@ -11,8 +11,6 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      #TODO: not forget to change to none before pushing to GitHub
+      #change to none
       ddl-auto: create
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    #TODO: not forget to delete
-    show-sql: true
