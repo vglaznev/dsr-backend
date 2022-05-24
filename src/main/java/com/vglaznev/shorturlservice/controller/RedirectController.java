@@ -1,6 +1,9 @@
 package com.vglaznev.shorturlservice.controller;
 
 import com.vglaznev.shorturlservice.service.ShortUrlService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +19,18 @@ public class RedirectController {
     private final ShortUrlService urlService;
 
     @GetMapping("/{shortUrlId}")
+    @Operation(
+            summary = "Redirect to original url",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "302",
+                            description = "Find successfully",
+                            content = @Content()),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Short url not exist",
+                            content = @Content())}
+    )
     public ResponseEntity<?> redirect(@PathVariable String shortUrlId) {
         return urlService.getUrlAlias(shortUrlId)
                 .map(url ->

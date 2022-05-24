@@ -25,13 +25,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.httpBasic()
+        http.cors()
+                .and()
+                .httpBasic()
                 .and()
                 .authorizeRequests()
-                    .antMatchers("/api/v*/user/registration", SHORT_URL_ID_PATTERN)
-                    .permitAll()
+                .antMatchers("/api/v*/user/registration", SHORT_URL_ID_PATTERN, "/v3/api-docs/**", "/swagger-ui/**")
+                .permitAll()
                 .anyRequest()
-                    .authenticated();
+                .authenticated();
     }
-    
+
 }
