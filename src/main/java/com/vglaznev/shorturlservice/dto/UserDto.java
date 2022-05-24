@@ -8,7 +8,7 @@ import lombok.*;
 @EqualsAndHashCode
 @Getter
 @Schema(description = "Data for registration")
-public class RegisterRequest {
+public class UserDto {
     @Schema(description = "Username")
     private final String username;
     @Schema(description = "User password")
