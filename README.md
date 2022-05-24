@@ -84,24 +84,14 @@ To run the application, execute following command in project root directory:
 
 You can check api-documentation:
 
-`https://localhost:8080/documentation/swagger-ui/index.html`
-
-It doesn't have any comments yet, but you can try out some methods.
-
-List of endpoints:
-
-* `/api/v1/user/registration` Register a new user.
-
-* `/api/v1/short-url/create` Create short link.
-
-* `/<rLYZqFw2>` Redirect to original resource.
+`http://localhost:8080/swagger-ui/index.html`
 
 
 ### Version
 
 ---
 
-The latest version is v1.2-dev.
+The latest version is v1.3-rel.
 
 ### History
 
