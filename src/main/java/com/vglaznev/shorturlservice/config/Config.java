@@ -15,7 +15,7 @@ public class Config {
     }
 
     @Bean
-    public UrlValidator urlValidator(){
+    public UrlValidator urlValidator() {
         return new UrlValidator();
     }
 
