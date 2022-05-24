@@ -21,11 +21,16 @@
 
     `cd dsr-backend`
 
+
+3. You can run test by command `./mvnw test` to make sure everything is ok.
+
+   (if you use Windows system, run `mvnw.cmd` instead of `./mvnw`, or you can use `mvn` on all systems, if you have Maven installed)
+
 ### Configure database
 
 ---
 
-Before run the application or tests you need to define datasource properties. To do this, you need to change `application.yml` file:
+Before run the application you need to define datasource properties. To do this, you need to change `application.yml` file:
 
 `cd src/main/resources/application.yml`
 
@@ -65,11 +70,10 @@ To run the application, execute following command in project root directory:
 
 `./mvnw spring-boot:run`
 
-(if you use Windows system, run `mvnw.cmd` instead of `./mvnw`, or you can use `mvn` on all systems, if you have Maven installed)
 
 #### With docker
 
----
+
 
 >Will be added soon
 
