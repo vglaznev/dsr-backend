@@ -13,7 +13,7 @@ public class SwaggerConfig {
                 .info(
                         new Info()
                                 .title("Short URL")
-                                .version("1.1")
+                                .version("1")
                 );
     }
 }
