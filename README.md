@@ -5,11 +5,12 @@
 
 ---
 
->Will be added soon
 This service allows you to create a short url based on a link you provided.
 
 For example:
+
     You enter: `https://www.youtube.com/watch?v=H0TNRBI8ZaM&ab_channel=BBCRadio1VEVO`
+    
     Service gives you: `http://<hostname>/H0TNRBI8` 
 
 
